@@ -16,11 +16,15 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        {{ overview['title'] }}
+        {{ movieGenre }}
         <br>
-        {{ overview['overview'] }}
+        {{ movieOverview }}
         <br>
-        <!-- {{ overview['']}} -->
+
+        <img src={{ moviePoster }} >
+
+        <iframe width="480" height="360" src={{ movieTrailer }} </iframe>
+
     </body>
 {% endblock %}
 
