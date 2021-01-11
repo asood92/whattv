@@ -16,14 +16,25 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        {{ movieGenre }}
+
+        <h1>{{ movieInfo["original_title"] }} </h1>
+        <h3> {{ movieInfo["genres"][0]["name"] }} <h2>
         <br>
-        {{ movieOverview }}
+
+        <h3>Synopsis:<h3>
+        {{ movieInfo["overview"] }}
         <br>
+        <p> {{ ratings[0]["Source"] }} Rating: {{ ratings[0]["Value"] }}
+        <p> {{ ratings[1]["Source"] }} Rating: {{ ratings[1]["Value"] }}
+        <p> {{ ratings[2]["Source"] }} Rating: {{ ratings[2]["Value"] }}
 
         <img src={{ moviePoster }} >
 
         <iframe width="480" height="360" src={{ movieTrailer }} </iframe>
+
+        <br>
+
+
 
     </body>
 {% endblock %}
