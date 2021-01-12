@@ -16,54 +16,90 @@
         </div>
     </div>
 
-    <div class="synopsis-flex">
+    <div class="container">
             <img src={{ moviePoster }} max-width: 20%>
             <p>{{ movieInfo["overview"] }}</p>
+            <iframe width="480" height="360" src={{ movieTrailer }}> Movie Trailer </iframe>
     </div>
 
-    <div class="sources">
-        <section id="stream">
-        <iframe width="480" height="360" src={{ movieTrailer }}> Movie Trailer </iframe>
-
-        {% for n in range(streamSources["buy"]| length)  %}
-            <a href={{ streamSources["link"] }}>
-                <img src=https://www.themoviedb.org/t/p/original{{ streamSources["buy"][n]["logo_path"] }}> {{ streamSources["buy"][n]["provider_name"] }}
-            </a>
-        {% endfor %}
-        </section>
+    <div class="container">
+        <ul>
+            <div class="sources">
+                {% for n in range(streamSources["buy"]| length)  %}
+                    <li><a href={{ streamSources["link"] }}>
+                        <img src=https://www.themoviedb.org/t/p/original{{ streamSources["buy"][n]["logo_path"] }}> {{ streamSources["buy"][n]["provider_name"] }}
+                    </a></li>
+                {% endfor %}
+                </div>
+        </ul>
     </div>
     <br>
 
-    <div class="cast">
+    <div class="container">
         <ul>
-        {% for i in range(5) %}
-            <li>{{ movieCast[i]["character"] }}
-            <img src=https://www.themoviedb.org/t/p/w276_and_h350_face{{ movieCast[i]["profile_path"] }} alt="Profile picture of  " {{ movieCast[0]["name"] }}> Played by: {{ movieCast[i]["name"] }} </li>
-        {% endfor %}
+            <div class="profile">
+                {% for i in range(4) %}
+                    <li>{{ movieCast[i]["character"] }}
+                    <img src=https://www.themoviedb.org/t/p/w276_and_h350_face{{ movieCast[i]["profile_path"] }} alt="Profile picture of  " {{ movieCast[0]["name"] }}> Played by: {{ movieCast[i]["name"] }} </li>
+                {% endfor %}
+            </div>
         </ul>
     </div>
 
     <ul>
-        {% for i in range(4) %}
-            <li>{{ suggestedMovies[i]["title"] }}
-            <img src=https://www.themoviedb.org/t/p/w250_and_h141_face{{ suggestedMovies[i]["poster_path"] }} alt="Poster of " {{ suggestedMovies[i]["title"] }}>  </li>
-        {% endfor %}
-        </ul>
+        <div class="container">
+            <div class="suggestions">
+                {% for i in range(4) %}
+                    <li>{{ suggestedMovies[i]["title"] }}
+                    <img src=https://www.themoviedb.org/t/p/w250_and_h141_face{{ suggestedMovies[i]["poster_path"] }} alt="Poster of " {{ suggestedMovies[i]["title"] }}>  </li>
+                {% endfor %}
+            </div>
+         </div>
+    </ul>
 
 </body>
+<style>
 
-<!-- <style>
-    .container {
-        display:flex;
-        justify-content: center;
+    body {
+        background-color: #2d3436;
+        color: #b2bec3;
     }
-    .synopsis-flex {
-        display: flex;
-        justify-content: center;
+
+    .container > img {
+        max-width: 150px;
+        max-height: auto;
     }
-    .synopsis-flex > #img {
-        max-width: 20%;
-        height: auto;
+    .profile > li > img {
+        max-width: 80px;
+        max-height: auto;
+        padding: 10px
     }
-</style> -->
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        }
+        .container > .suggestions > li > img {
+            max-width: 80px;
+            padding: 10px
+        }
+
+        .sources > li > a > img {
+            max-width: 40px;
+            padding: 10px
+        }
+
+    li {
+        display: inline-block;
+        width: 65%;
+        }
+
+    @media screen and (min-width: 20em) {
+
+    li {
+        width: 33.33333%;
+    }
+
+
+</style>
 {% endblock %}
