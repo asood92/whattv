@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container">
+        <div class="child">
+            <h1>{{ movieInfo["original_title"] }} </h1>
+            <p> <b>Genre(s): </b> {{ movieInfo["genres"][0]["name"] }} </p>
+
+            <div class="ratings">
+                <ul style="list-style-type:none">
+                    {% for i in range(3) %}
+                        <li><b>{{ ratings[i]["Source"] }}</b> Rating: {{ ratings[i]["Value"] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="synopsis-flex">
+            <img src={{ moviePoster }} max-width: 20%>
+            <p>{{ movieInfo["overview"] }}</p>
+    </div>
+
+    <div class="sources">
+        <section id="stream">
+        <iframe width="480" height="360" src={{ movieTrailer }}> Movie Trailer </iframe>
+
+        {% for n in range(streamSources["buy"]| length)  %}
+            <a href={{ streamSources["link"] }}>
+                <img src=https://www.themoviedb.org/t/p/original{{ streamSources["buy"][n]["logo_path"] }}> {{ streamSources["buy"][n]["provider_name"] }}
+            </a>
+        {% endfor %}
+        </section>
+    </div>
+    <br>
+
+    <div class="cast">
+        <ul>
+        {% for i in range(5) %}
+            <li>{{ movieCast[i]["character"] }}
+            <img src=https://www.themoviedb.org/t/p/w276_and_h350_face{{ movieCast[i]["profile_path"] }} alt="Profile picture of  " {{ movieCast[0]["name"] }}> Played by: {{ movieCast[i]["name"] }} </li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <ul>
+        {% for i in range(4) %}
+            <li>{{ suggestedMovies[i]["title"] }}
+            <img src=https://www.themoviedb.org/t/p/w250_and_h141_face{{ suggestedMovies[i]["poster_path"] }} alt="Poster of " {{ suggestedMovies[i]["title"] }}>  </li>
+        {% endfor %}
+        </ul>
+
+</body>
+
+<!-- <style>
+    .container {
+        display:flex;
+        justify-content: center;
+    }
+    .synopsis-flex {
+        display: flex;
+        justify-content: center;
+    }
+    .synopsis-flex > #img {
+        max-width: 20%;
+        height: auto;
+    }
+</style> -->
+{% endblock %}
