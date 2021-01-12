@@ -155,13 +155,3 @@ def contactForm():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-    # pp.pprint(castJSON)
-
-    # @app.route("/<query>", methods=["GET"])
-# def sanitizeQuery(query):
-#     safeQuery = {"query": {query}}
-#     urlencode(safeQuery)
-#     return safeQuery
-
-# safeQuery = sanitizeQuery(query)

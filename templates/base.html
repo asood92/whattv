@@ -25,10 +25,12 @@
         <main>
             {% block content %}
                 <div class="box">
-                    What movie would you like to find information about?
-                    <form class="movie" action="{{ url_for('getMovieInfo') }}">
-                        <input type="text" name="search">
-                    </form>
+                    <div class="prompt">
+                        What movie would you like to find information about?
+                        <form class="movie" action="{{ url_for('getMovieInfo') }}">
+                            <input type="text" name="search">
+                        </form>
+                    </div>
                 </div>
             {% endblock %}
         </main>
@@ -37,6 +39,10 @@
     body {
         background-color: #2d3436;
         color: #b2bec3;
+    }
+    .box > .prompt {
+        margin-top: 3%;
+        margin-left: 40%;
     }
 </style>
 </html>

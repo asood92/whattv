@@ -19,10 +19,12 @@
     <div class="container">
             <img src={{ moviePoster }} max-width: 20%>
             <p>{{ movieInfo["overview"] }}</p>
+            <h3> Movie Trailer</h3>
             <iframe width="480" height="360" src={{ movieTrailer }}> Movie Trailer </iframe>
     </div>
 
     <div class="container">
+        <h3> Where to watch</h3>
         <ul>
             <div class="sources">
                 {% for n in range(streamSources["buy"]| length)  %}
@@ -36,6 +38,7 @@
     <br>
 
     <div class="container">
+        <h3> Cast: </h3>
         <ul>
             <div class="profile">
                 {% for i in range(4) %}
@@ -48,6 +51,7 @@
 
     <ul>
         <div class="container">
+            <h3> If you liked Chef...</h3>
             <div class="suggestions">
                 {% for i in range(4) %}
                     <li>{{ suggestedMovies[i]["title"] }}
@@ -56,18 +60,21 @@
             </div>
          </div>
     </ul>
-
 </body>
 <style>
 
     body {
         background-color: #2d3436;
         color: #b2bec3;
+        padding-bottom: 4%;
     }
 
     .container > img {
         max-width: 150px;
         max-height: auto;
+    }
+    .profile > li {
+        margin: 10px;
     }
     .profile > li > img {
         max-width: 80px;
@@ -78,10 +85,6 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-        }
-        .container > .suggestions > li > img {
-            max-width: 80px;
-            padding: 10px
         }
 
         .sources > li > a > img {
